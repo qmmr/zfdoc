@@ -1,0 +1,13 @@
+User:
+  User_1:
+    username: John Doe
+    password: a51dda7c7ff50b61eaea0444371f4a6a9301e501
+    email: john.doe@examples.com
+  User_2:
+    username: Jane Doe
+    password: 8a8deed44623d4c44268c26652d80945851c4f7f
+    email: jane.doe@examples.com
+  User_3:
+    username: Jim Doe
+    password: 1cd02e31b43620d7c664e038ca42a060d61727b9
+    email: jim.doe@examples.com

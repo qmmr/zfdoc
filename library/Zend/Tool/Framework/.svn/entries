@@ -1,0 +1,120 @@
+10
+
+dir
+51
+svn://46.105.110.162/eos/trunk/library/Zend/Tool/Framework
+svn://46.105.110.162
+
+
+
+2012-01-25T09:55:32.034980Z
+4
+eos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+a5ecdd8c-fb16-4d08-9175-e1531f2344d8
+
+Action
+dir
+
+Client
+dir
+
+Exception.php
+file
+
+
+
+
+2012-01-25T14:36:10.274000Z
+5f1e32b4b13e07b3c251309f6612c265
+2012-01-25T09:55:32.034980Z
+4
+eos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1119
+
+Loader
+dir
+
+Manifest
+dir
+
+Metadata
+dir
+
+Provider
+dir
+
+Registry
+dir
+
+Registry.php
+file
+
+
+
+
+2012-01-25T14:36:18.225000Z
+8708dc0fdd03b44769d0d820e89aa777
+2012-01-25T09:55:32.034980Z
+4
+eos
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11584
+
+System
+dir
+
