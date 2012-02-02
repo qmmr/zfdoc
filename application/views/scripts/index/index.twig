@@ -3,3 +3,19 @@
     <h2>Zend Framework 1.11.11 and Doctrine 1.2.4 integration</h2>
     <h3>Also starring: Twig - The flexible, fast, and secure template engine for PHP</h3>
 </div>
+
+{% if langs|length > 0 %}
+
+<ul>
+    {% for lang in langs %}
+
+    <li>{{ lang.name|e }}</li>
+
+    {% endfor %}
+</ul>
+
+{% else %}
+
+<p class="error">No languages found.</p>
+
+{% endif %}
