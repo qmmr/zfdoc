@@ -2,6 +2,7 @@ options:
     type: INNODB
     collate: utf8_general_ci
     charset: utf8
+
 User:
   actAs:
     Timestampable:
@@ -22,7 +23,29 @@ User:
       notnull: true
     email:
       type: string(50)
+    language_id:
+      type: integer
+      unsigned: true
     created_at:
       type: timestamp
-      
-      
+  relations:
+    Language:
+      local: language_id
+      foreign: id
+
+Language:
+  columns:
+    id:
+      type: integer
+      unsigned: true
+      primary: true
+      autoincrement: true
+    name:
+      type: string(50)
+      notnull: true
+  relations:
+    Users:
+      class: User
+      foreign: language_id
+      local: id
+      type: many

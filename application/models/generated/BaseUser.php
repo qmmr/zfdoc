@@ -9,7 +9,9 @@
  * @property string $username
  * @property string $password
  * @property string $email
+ * @property integer $language_id
  * @property timestamp $created_at
+ * @property Language $Language
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -41,6 +43,10 @@ abstract class BaseUser extends Doctrine_Record
              'type' => 'string',
              'length' => '50',
              ));
+        $this->hasColumn('language_id', 'integer', null, array(
+             'type' => 'integer',
+             'unsigned' => true,
+             ));
         $this->hasColumn('created_at', 'timestamp', null, array(
              'type' => 'timestamp',
              ));
@@ -53,6 +59,10 @@ abstract class BaseUser extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Language', array(
+             'local' => 'language_id',
+             'foreign' => 'id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              'name' => 'created_at',
              'type' => 'timestamp',

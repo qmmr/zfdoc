@@ -45,6 +45,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $manager->setAttribute(Doctrine::ATTR_AUTOLOAD_TABLE_CLASSES, true);
 
         $doctrine = $this->getOption('doctrine');
+
+        // loads all models under path from application.ini
+        Doctrine::loadModels($doctrine['models_path']);
+
         $conn = Doctrine_Manager::connection($doctrine['dsn'], 'doctrine');
         $conn->setAttribute(Doctrine::ATTR_USE_NATIVE_ENUM, true);
         return $conn;
