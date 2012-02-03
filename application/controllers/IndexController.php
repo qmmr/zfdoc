@@ -17,59 +17,41 @@ class IndexController extends Zend_Controller_Action {
             } else {
                 $this->view->message = implode(' ', $result->getMessages());
             }
-//            var_dump($this->getRequest()->getParams());
+            //            var_dump($this->getRequest()->getParams());
         }
 
         $this->view->langs = $langs = Model_Language::findAll();
 
-//        foreach ($langs as $lang) {
-//            echo $lang->name . '<br>';
-//            foreach ($lang->Users as $u) {
-//                echo $u->username . '<br>';
-//            }
-//        }
+        //        foreach ($langs as $lang) {
+        //            echo $lang->name . '<br>';
+        //            foreach ($lang->Users as $u) {
+        //                echo $u->username . '<br>';
+        //            }
+        //        }
     }
 
-    public function mailAction() {
-        // default
-//        $transportType = new Zend_Mail_Transport_Sendmail();
-        
-        $smtpOptions = array(
-            'auth'      => 'login',
-            'username'  => 'bez.niczego@gmail.com',
-            'password'  => 'password',
-            'ssl'       => 'ssl',
-            'port'      => 465
-        );
-        $transportType = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $smtpOptions);
-        
-        Zend_Mail::setDefaultTransport($transportType);
-        
-        $mail = new Zend_Mail();
-
-        $email = "bez.niczego@gmail.com";
-        $name = "Marcin Kumorek";
+    public function sendmailAction() {
         $msg = "Hello from default mail!";
-
-        $mail->addTo($email, $name)
-                ->setFrom($email, $name)
-                ->setSubject('Hi there!')
-                ->setBodyText($msg)
-                ->send($transportType);
+        $mail = new Zend_Mail();
+        $mail->addTo('jaka.wredna@gmail.com', 'Marcin Kumorek')
+            ->setFrom('jaka.wredna@gmail.com', 'Marcin Kumorek')
+            ->setSubject('Hi there!')
+            ->setBodyText($msg)
+            ->send();
     }
 
     public function editAction() {
         if (!Zend_Auth::getInstance()->hasIdentity()) {
             $this->_redirect('/');
         }
-        
+
         if ($this->getRequest()->isPost()) {
             $user = Zend_Auth::getInstance()->getIdentity();
             $user->email = $this->_getParam('email');
             $user->save();
         }
     }
-    
+
     public function authorizedAction() {
         if (!Zend_Auth::getInstance()->hasIdentity()) {
             $this->_redirect('/');
