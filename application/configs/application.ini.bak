@@ -1,7 +1,6 @@
 [production]
 phpSettings.display_startup_errors = 0
 phpSettings.display_errors = 0
-
 phpSettings.date.timezone = "Europe/Warsaw"
 
 includePaths.library = APPLICATION_PATH "/../library"
@@ -37,7 +36,6 @@ doctrine.generate_models_options.generateBaseClasses = true
 ;doctrine.generate_models_options.baseClassPrefix = 'Base'
 ;doctrine.generate_models_options.baseClassesDirectory = '_base'
 ;doctrine.generate_models_options.classPrefixFiles = false
-;doctrine.generate_models_options.classPrefix = "Application_Model_"
 ;doctrine.generate_models_options.generateAccessors = false
 
 [staging : production]
