@@ -30,6 +30,46 @@ class IndexController extends Zend_Controller_Action {
 //        }
     }
 
+    public function mailAction() {
+        // default
+//        $transportType = new Zend_Mail_Transport_Sendmail();
+        
+        $smtpOptions = array(
+            'auth'      => 'login',
+            'username'  => 'bez.niczego@gmail.com',
+            'password'  => 'password',
+            'ssl'       => 'ssl',
+            'port'      => 465
+        );
+        $transportType = new Zend_Mail_Transport_Smtp('smtp.gmail.com', $smtpOptions);
+        
+        Zend_Mail::setDefaultTransport($transportType);
+        
+        $mail = new Zend_Mail();
+
+        $email = "bez.niczego@gmail.com";
+        $name = "Marcin Kumorek";
+        $msg = "Hello from default mail!";
+
+        $mail->addTo($email, $name)
+                ->setFrom($email, $name)
+                ->setSubject('Hi there!')
+                ->setBodyText($msg)
+                ->send($transportType);
+    }
+
+    public function editAction() {
+        if (!Zend_Auth::getInstance()->hasIdentity()) {
+            $this->_redirect('/');
+        }
+        
+        if ($this->getRequest()->isPost()) {
+            $user = Zend_Auth::getInstance()->getIdentity();
+            $user->email = $this->_getParam('email');
+            $user->save();
+        }
+    }
+    
     public function authorizedAction() {
         if (!Zend_Auth::getInstance()->hasIdentity()) {
             $this->_redirect('/');
