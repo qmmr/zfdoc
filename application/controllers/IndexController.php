@@ -8,7 +8,7 @@ class IndexController extends Zend_Controller_Action {
 
     public function indexAction() {
         // action body
-        $this->view->langs = $langs = Language::findAll();
+        $this->view->langs = $langs = Model_Language::findAll();
 
 //        foreach ($langs as $lang) {
 //            echo $lang->name . '<br>';

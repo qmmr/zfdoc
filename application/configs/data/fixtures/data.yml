@@ -1,4 +1,4 @@
-User:
+Model_User:
   User_1:
     username: John Doe
     password: a51dda7c7ff50b61eaea0444371f4a6a9301e501
@@ -15,7 +15,7 @@ User:
     email: jim.doe@examples.com
     Language: Lang_3
 
-Language:
+Model_Language:
   Lang_1:
     name: PHP
   Lang_2:
