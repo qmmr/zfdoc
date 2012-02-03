@@ -1,7 +1,7 @@
 Model_User:
   User_1:
     username: John Doe
-    password: a51dda7c7ff50b61eaea0444371f4a6a9301e501
+    password: john
     email: john.doe@examples.com
     Language: Lang_2
   User_2:
