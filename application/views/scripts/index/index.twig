@@ -1,8 +1,13 @@
-<form action="" id="" method="post">
-    <input type="text" id="username" name="username" value="username">
-    <input type="password" id="password" name="password" value="">
-    <input type="submit" value="login">
-</form>
+<ul>
+  <li>
+    <p>Login:</p>
+    {{ loginForm|raw }}
+  </li>
+  <li>or</li>
+  <li>
+    <a href="/index/register">Register</a>
+  </li>
+</ul>
 
 <h3>Messages:</h3>
 <p class="notice">{{ message }}</p>

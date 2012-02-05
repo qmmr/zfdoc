@@ -24,6 +24,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         $config = $this->getOption('doctrine');
 
+        Doctrine::loadModels($config['models_path']);
+
         $manager = Doctrine_Manager::getInstance();
         $manager->setAttribute(Doctrine::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
 
@@ -33,13 +35,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         // we get 1 which is aggressive and 2 when we use make app
         $manager->setAttribute(
             Doctrine::ATTR_MODEL_LOADING,
-//                Doctrine::MODEL_LOADING_AGGRESSIVE
-            $config['model_autoloading']
+            Doctrine::MODEL_LOADING_AGGRESSIVE
+//            $config['model_autoloading']
         );
 
         //        $manager->setAttribute(Doctrine::ATTR_AUTOLOAD_TABLE_CLASSES, true);
 
-        Doctrine::loadModels($config['models_path']);
+
 
         $conn = Doctrine_Manager::connection($config['dsn'], 'doctrine');
         $conn->setAttribute(Doctrine::ATTR_USE_NATIVE_ENUM, true);
@@ -47,13 +49,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         return $conn;
     }
 
-    public function _initView() {
+    protected function _initView() {
         $view = new Zwig_View(
             array(
                 'encoding' => 'UTF-8',
                 'helperPath' => array(),
             )
         );
+
+        $view->addHelperPath('ZD/View/Helper/', 'ZD_View_Helper');
 
         $loader = new Twig_Loader_Filesystem(array());
         $zwig = new Zwig_Environment($view, $loader, array(

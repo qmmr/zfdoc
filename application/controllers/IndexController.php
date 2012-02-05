@@ -4,12 +4,16 @@ class IndexController extends Zend_Controller_Action {
 
     public function init() {
         /* Initialize action controller here */
+        var_dump($this->_getAllParams());
+        //        var_dump($this->getRequest()->getParams());
     }
 
     public function indexAction() {
+        $this->view->loginForm = new Form_Login();
+
+
         if ($this->getRequest()->isPost()) {
-            $adapter = new ZD_Auth_Adapter($this->_getParam('username'), $this->_getParam('password')
-            );
+            $adapter = new ZD_Auth_Adapter($this->_getParam('username'), $this->_getParam('password'));
             $result = Zend_Auth::getInstance()->authenticate($adapter);
 
             if (Zend_Auth::getInstance()->hasIdentity()) {
@@ -17,7 +21,6 @@ class IndexController extends Zend_Controller_Action {
             } else {
                 $this->view->message = implode(' ', $result->getMessages());
             }
-            //            var_dump($this->getRequest()->getParams());
         }
 
         $this->view->langs = $langs = Model_Language::findAll();
@@ -27,7 +30,7 @@ class IndexController extends Zend_Controller_Action {
         //            foreach ($lang->Users as $u) {
         //                echo $u->username . '<br>';
         //            }
-        //        }
+        //        
     }
 
     public function sendmailAction() {
@@ -49,15 +52,19 @@ class IndexController extends Zend_Controller_Action {
             $user = Zend_Auth::getInstance()->getIdentity();
             $user->email = $this->_getParam('email');
             $user->save();
+            $this->_redirect('/index/authorized');
         }
+
+        $this->view->email = Zend_Auth::getInstance()->getIdentity()->email;
     }
 
     public function authorizedAction() {
         if (!Zend_Auth::getInstance()->hasIdentity()) {
             $this->_redirect('/');
         }
-        var_dump($this->getRequest()->getParams());
-        var_dump(Zend_Auth::getInstance()->getIdentity()->toArray());
+        //        var_dump(Zend_Auth::getInstance()->getIdentity()->toArray());
+
+        $this->view->user = Zend_Auth::getInstance()->getIdentity();
     }
 
     public function logoutAction() {
@@ -65,5 +72,19 @@ class IndexController extends Zend_Controller_Action {
         $this->_redirect('/');
     }
 
+    public function registerAction() {
+        $this->view->form = new Form_Register();
+
+        if ($this->getRequest()->isPost() && $this->view->form->isValid($this->_getAllParams())) {
+            var_dump($this->_getAllParams());
+        }
+
+//        if ($this->getRequest()->isPost()) {
+//            echo 'post';
+//        }
+    }
+
 }
+
+
 

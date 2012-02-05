@@ -1,19 +1,19 @@
 Model_User:
   User_1:
+    username: jd
+    password: jd
+    email: jim.doe@examples.com
+    Language: Lang_3
+  User_2:
     username: John Doe
     password: john
     email: john.doe@examples.com
     Language: Lang_2
-  User_2:
+  User_3:
     username: Jane Doe
     password: 8a8deed44623d4c44268c26652d80945851c4f7f
     email: jane.doe@examples.com
     Language: Lang_2
-  User_3:
-    username: Jim Doe
-    password: 1cd02e31b43620d7c664e038ca42a060d61727b9
-    email: jim.doe@examples.com
-    Language: Lang_3
 
 Model_Language:
   Lang_1:

@@ -11,5 +11,34 @@
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 class Model_User extends Model_Base_User {
+    const USER_NOT_FOUND = 1;
+    const WRONG_PASSWORD = 2;
 
+    /**
+     *
+     * @param type string
+     * @param type string
+     * @return $user
+     * @throws Exception
+     */
+    public static function authenticate($username, $password) {
+        $user = Doctrine_Core::getTable('Model_User')
+            ->findOneByUsername($username);
+        if ($user) {
+            if ($user->password == $password) {
+                return $user;
+            }
+            // if password don't match
+            throw new Exception(self::WRONG_PASSWORD);
+        }
+        // if no user found
+        throw new Exception(self::USER_NOT_FOUND);
+    }
+
+    public function save(Doctrine_Connection $conn = null) {
+        $log = new Model_Log();
+        $log->event = 'EMAIL_CHANGED';
+        $log->description = 'user ' . $this->username . ' changed email to ' . $this->email;
+        $log->save();
+    }
 }

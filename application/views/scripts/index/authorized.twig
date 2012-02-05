@@ -1,3 +1,6 @@
 <h1>Authorized personel only.</h1>
-<h2>You are now logged as: {{ Zend_Auth.getInstance().getIdentity().username }}</h2>
+<h2>You are now logged as: {{ user.username }}</h2>
+<h2>Your email: {{ user.email }}</h2>
+<a href="/index/edit">edit email</a>
+<br>
 <a href="/index/logout">logout</a>
