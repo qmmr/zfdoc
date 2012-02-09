@@ -17,6 +17,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="list"/>
         </controllerFile>
+        <controllerFile controllerName="Async">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory>
@@ -42,6 +45,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="register"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Async">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
@@ -84,6 +90,9 @@
           <testApplicationControllerFile forControllerName="Users">
             <testApplicationActionMethod forActionName="index"/>
             <testApplicationActionMethod forActionName="list"/>
+          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Async">
+            <testApplicationActionMethod forActionName="index"/>
           </testApplicationControllerFile>
         </testApplicationControllerDirectory>
       </testApplicationDirectory>

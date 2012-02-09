@@ -1,10 +1,4 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of UserTest
  *
@@ -17,7 +11,7 @@ class UserTest  extends Zend_Test_PHPUnit_ControllerTestCase {
 //    }
     
     public function testCanAddUsers() {
-        $user = new User();
+        $user = new Model_User();
         $user->username = "John Doe";
         $user->password = "john";
         $user->email = "john.doe@examples.com";
@@ -25,7 +19,7 @@ class UserTest  extends Zend_Test_PHPUnit_ControllerTestCase {
         
         $this->assertTrue(intval($user->id) === 1);
         
-        $user2 = new User();
+        $user2 = new Model_User();
         $user2->username = "Jane Doe";
         $user2->password = "jane";
         $user2->email = "jane.doe@examples.com";

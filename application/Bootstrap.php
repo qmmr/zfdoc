@@ -58,6 +58,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         );
 
         $view->addHelperPath('ZD/View/Helper/', 'ZD_View_Helper');
+        $view->addHelperPath('ZendX/jQuery/View/Helper', 'ZendX_jQuery_View_Helper');
 
         $loader = new Twig_Loader_Filesystem(array());
         $zwig = new Zwig_Environment($view, $loader, array(

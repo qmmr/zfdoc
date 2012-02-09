@@ -18,17 +18,82 @@ User:
       notnull: true
     email:
       type: string(50)
-    language_id:
-      type: integer
-      unsigned: true
   relations:
-    Language:
-      local: language_id
+    Task:
+      local: task_id
+      foreign: id
+    Category:
+      local: category_id
       foreign: id
   actAs:
     Timestampable:
 
-Language:
+Usertasks:
+  columns:
+    id:
+      type: integer
+      unsigned: true
+      primary: true
+      autoincrement: true
+    user_id:
+      type: integer
+      unsigned: true
+    task_id:
+      type: integer
+      unsigned: true
+  actAs:
+    Timestampable:
+
+Task:
+  columns:
+    id:
+      type: integer
+      unsigned: true
+      primary: true
+      autoincrement: true
+    title:
+      type: string
+      notnull: true
+    description:
+      type: string
+      notnull: true
+    user_id:
+      type: integer
+      unsigned: true
+    tag_id:
+      type: integer
+      unsigned: true
+    category_id:
+      type: integer
+      unsigned: true
+  relations:
+    User:
+      local: user_id
+      foreign: id
+    Tag:
+      local: tag_id
+      foreign: id
+    Category:
+      local: category_id
+      foreign: id
+  actAs:
+    Timestampable:
+
+Category:
+  columns:
+    id:
+      type: integer
+      unsigned: true
+      primary: true
+      autoincrement: true
+    name:
+      type: string(50)
+      notnull: true
+  reltions:
+    foreing: category_id
+    local: id
+
+Tag:
   columns:
     id:
       type: integer
@@ -39,11 +104,28 @@ Language:
       type: string(50)
       notnull: true
   relations:
-    Users:
-      class: User
-      foreign: language_id
+    Tasks:
+      class: Task
+      foreign: task_id
       local: id
       type: many
+
+#Language:
+#  columns:
+#    id:
+#      type: integer
+#      unsigned: true
+#      primary: true
+#      autoincrement: true
+#    name:
+#      type: string(50)
+#      notnull: true
+#  relations:
+#    Users:
+#      class: User
+#      foreign: language_id
+#      local: id
+#      type: many
 
 Log:
   columns:

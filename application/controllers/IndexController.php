@@ -4,7 +4,9 @@ class IndexController extends Zend_Controller_Action {
 
     public function init() {
         /* Initialize action controller here */
-        var_dump($this->_getAllParams());
+//        echo '<pre>';
+//        var_dump($this->_getAllParams());
+//        echo '</pre>';
         //        var_dump($this->getRequest()->getParams());
     }
 
@@ -78,10 +80,6 @@ class IndexController extends Zend_Controller_Action {
         if ($this->getRequest()->isPost() && $this->view->form->isValid($this->_getAllParams())) {
             var_dump($this->_getAllParams());
         }
-
-//        if ($this->getRequest()->isPost()) {
-//            echo 'post';
-//        }
     }
 
 }

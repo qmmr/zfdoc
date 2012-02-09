@@ -12,11 +12,11 @@
 <h3>Messages:</h3>
 <p class="notice">{{ message }}</p>
 
-<div id="welcome">
-    <h1>Welcome to the zfdoc</h1>
-    <h2>Zend Framework 1.11.11 and Doctrine 1.2.4 integration</h2>
-    <h3>Also starring: Twig - The flexible, fast, and secure template engine for PHP</h3>
-</div>
+{#<div id="welcome">#}
+    {#<h1>Welcome to the zfdoc</h1>#}
+    {#<h2>Zend Framework 1.11.11 and Doctrine 1.2.4 integration</h2>#}
+    {#<h3>Also starring: Twig - The flexible, fast, and secure template engine for PHP</h3>#}
+{#</div>#}
 
 {% if langs|length > 0 %}
 
@@ -24,6 +24,9 @@
     {% for lang in langs %}
 
     <li>{{ lang.name|e }}</li>
+    {#{% data = array('id' : 'id', 'lang' : lang) %}#}
+    {#{% data['1','2','3'] %}#}
+    {#{{ partial('partials/notice.twig', data)}}#}
 
     {% endfor %}
 </ul>
@@ -33,3 +36,10 @@
 <p class="error">No languages found.</p>
 
 {% endif %}
+
+<label for="msg">Message:</label>
+<input name="msg" id="msg" value="">
+<a href="#" id="getitems">Get response</a>
+
+<div id="messages">
+</div>
